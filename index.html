@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Pubertad, Climaterio y Menopausia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --rosa-palo:#f7d6e2;
+    --rosa-claro:#fbe6ee;
+    --lila:#e3d6f7;
+    --lila2:#eee3fb;
+    --blanco:#ffffff;
+    --fucsia:#ef6f9b;
+    --fucsia-suave:#f495b9;
+    --azul:#c7e3f5;
+    --azul2:#e3f1fb;
+    --bg:#fdf1f5;
+    --texto:#5a3a4a;
+    --texto-suave:#7a5a68;
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    background-image:
+      radial-gradient(circle at 10% 5%, #fde3ec 0%, transparent 35%),
+      radial-gradient(circle at 90% 15%, #ede3fb 0%, transparent 35%),
+      radial-gradient(circle at 15% 90%, #e3f1fb 0%, transparent 30%);
+    font-family:'Quicksand', sans-serif;
+    color:var(--texto);
+    padding:0 0 60px 0;
+    overflow-x:hidden;
+  }
+
+  .page{
+    max-width:640px;
+    margin:0 auto;
+    position:relative;
+    padding:30px 18px 0 18px;
+  }
+
+  /* ---------- HEADER ---------- */
+  .header{
+    text-align:center;
+    position:relative;
+    padding:34px 18px 30px;
+    margin-bottom:10px;
+  }
+  .header .tape{
+    position:absolute;
+    width:90px;height:26px;
+    background:repeating-linear-gradient(45deg, #fbb8ce, #fbb8ce 6px, #f7a4c3 6px, #f7a4c3 12px);
+    opacity:.75;
+    transform:rotate(-8deg);
+    top:-6px; left:30px;
+    border-radius:3px;
+  }
+  .header .tape.right{
+    left:auto; right:30px; top:-10px;
+    transform:rotate(10deg);
+    background:repeating-linear-gradient(45deg, #c9e6fb, #c9e6fb 6px, #b6dafb 6px, #b6dafb 12px);
+  }
+  .header h1{
+    font-family:'Caveat', cursive;
+    font-size:54px;
+    font-weight:700;
+    color:var(--fucsia);
+    margin:10px 0 4px;
+    line-height:1.05;
+    text-shadow: 2px 2px 0 #fff;
+  }
+  .header .sub{
+    font-size:16px;
+    font-weight:600;
+    color:var(--texto-suave);
+    background:var(--blanco);
+    display:inline-block;
+    padding:6px 18px;
+    border-radius:20px;
+    border:2px dashed var(--fucsia-suave);
+    transform:rotate(-1.5deg);
+  }
+  .doodle-row{
+    margin-top:14px;
+    font-size:20px;
+    letter-spacing:10px;
+    opacity:.8;
+  }
+
+  /* ---------- SPINE ---------- */
+  .spine{
+    position:absolute;
+    left:50%;
+    top:0;
+    bottom:0;
+    width:4px;
+    background:repeating-linear-gradient(to bottom, var(--fucsia-suave) 0 10px, transparent 10px 20px);
+    transform:translateX(-50%);
+    z-index:0;
+  }
+
+  .node{
+    width:26px;height:26px;
+    border-radius:50%;
+    background:var(--fucsia);
+    border:3px solid #fff;
+    box-shadow:0 0 0 3px var(--fucsia-suave);
+    margin:0 auto 0;
+    position:relative;
+    z-index:2;
+  }
+
+  /* ---------- SECTION CARD ---------- */
+  .section{
+    position:relative;
+    z-index:2;
+    margin:0 auto 36px;
+    max-width:100%;
+  }
+  .card{
+    background:var(--blanco);
+    border-radius:22px;
+    padding:20px 20px 18px;
+    margin-top:14px;
+    box-shadow:5px 8px 0 rgba(0,0,0,0.04), 0 2px 10px rgba(180,120,150,0.10);
+    position:relative;
+  }
+  .card.rot-l{ transform:rotate(-0.6deg); }
+  .card.rot-r{ transform:rotate(0.6deg); }
+
+  .stitch{
+    border:2.5px dashed;
+  }
+
+  .pin{
+    position:absolute;
+    width:16px;height:16px;
+    border-radius:50%;
+    top:-9px;
+    background:radial-gradient(circle at 30% 30%, #fff, var(--fucsia) 60%);
+    box-shadow:0 2px 3px rgba(0,0,0,0.25);
+  }
+
+  .sec-title{
+    font-family:'Caveat', cursive;
+    font-size:30px;
+    font-weight:700;
+    margin:0 0 12px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+
+  .sec-num{
+    font-family:'Quicksand',sans-serif;
+    font-size:12px;
+    font-weight:700;
+    color:#fff;
+    background:var(--fucsia);
+    border-radius:50%;
+    width:24px;height:24px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+  }
+
+  p, li{ font-size:14.5px; line-height:1.5; margin:4px 0; }
+  ul{ margin:6px 0 6px 0; padding-left:20px; }
+  strong{ color:var(--fucsia); }
+
+  .tag{
+    display:inline-block;
+    background:var(--lila2);
+    border-radius:10px;
+    padding:4px 10px;
+    font-size:13px;
+    font-weight:600;
+    margin:3px 4px 3px 0;
+    color:#6a4a8a;
+  }
+  .tag.pink{ background:var(--rosa-claro); color:var(--fucsia); }
+  .tag.blue{ background:var(--azul2); color:#2f6c96; }
+
+  .row-flow{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin:8px 0;
+  }
+  .pill{
+    background:var(--azul2);
+    border:2px solid var(--azul);
+    border-radius:14px;
+    padding:6px 12px;
+    font-size:13.5px;
+    font-weight:600;
+    color:#2f6c96;
+  }
+  .pill.up::before{ content:"⬆ "; color:#d44b78; }
+  .pill.down::before{ content:"⬇ "; color:#3a8fc7; }
+
+  .mini-box{
+    background:var(--rosa-claro);
+    border-radius:14px;
+    padding:10px 12px;
+    margin:6px 0;
+    font-size:13.5px;
+  }
+  .mini-box b{ color:var(--fucsia); }
+
+  /* ---------- HORMONE ARROW DIAGRAM ---------- */
+  .hormone-diagram{
+    background:var(--lila2);
+    border-radius:16px;
+    padding:14px;
+    margin-top:8px;
+    text-align:center;
+  }
+  .hormone-diagram .flow{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:6px;
+    font-weight:700;
+    font-size:14px;
+  }
+  .hormone-diagram .flow span{
+    background:#fff;
+    border-radius:10px;
+    padding:6px 10px;
+    box-shadow:0 1px 4px rgba(0,0,0,0.08);
+  }
+  .arrow{ color:#bb88cc; font-size:18px; }
+
+  /* ---------- STRAW TIMELINE ---------- */
+  .straw-wrap{
+    overflow-x:auto;
+    margin-top:6px;
+    padding-bottom:6px;
+  }
+  .straw-line{
+    display:flex;
+    min-width:560px;
+    gap:0;
+  }
+  .straw-step{
+    flex:1;
+    text-align:center;
+    padding:10px 6px;
+    position:relative;
+    border-top:5px solid var(--fucsia-suave);
+  }
+  .straw-step:nth-child(1){ border-color:#f3c4d6; }
+  .straw-step:nth-child(2){ border-color:#f29bbf; }
+  .straw-step:nth-child(3){ border-color:#ef6f9b; }
+  .straw-step:nth-child(4){ border-color:#d4548a; background:#fdeaf1; border-radius:10px 10px 0 0; }
+  .straw-step:nth-child(5){ border-color:#b9447a; }
+  .straw-step .dot{
+    width:14px;height:14px;border-radius:50%;
+    background:var(--fucsia);
+    margin:-15px auto 6px;
+    border:3px solid #fff;
+  }
+  .straw-step .lbl{ font-size:11.5px; font-weight:700; line-height:1.2; }
+  .straw-step .sub{ font-size:10px; color:var(--texto-suave); margin-top:2px;}
+
+  /* ---------- ICON GRID ---------- */
+  .icon-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin-top:8px;
+  }
+  .icon-card{
+    background:var(--rosa-claro);
+    border-radius:16px;
+    padding:12px 10px;
+    text-align:center;
+  }
+  .icon-card .emoji{ font-size:26px; display:block; margin-bottom:4px;}
+  .icon-card .lbl{ font-weight:700; font-size:13px; }
+
+  .icon-grid.three{ grid-template-columns:1fr 1fr 1fr; }
+  .icon-grid.three .icon-card{ background:var(--azul2); }
+
+  /* ---------- WARNING LIST ---------- */
+  .warn-list{
+    background:#fdeceb;
+    border:2px dashed #e98787;
+    border-radius:16px;
+    padding:12px 14px;
+    margin-top:6px;
+  }
+  .warn-list li{ color:#b2454a; font-weight:600; }
+  .warn-list li::marker{ content:"🚫 "; }
+  .warn-list{ list-style:none; padding-left:6px;}
+  .warn-list li{ margin:4px 0; list-style:none; }
+
+  /* ---------- TABLE STYLE ---------- */
+  .table-box{
+    width:100%;
+    border-collapse:separate;
+    border-spacing:0 6px;
+    margin-top:6px;
+  }
+  .table-box td{
+    background:var(--azul2);
+    font-size:13px;
+    padding:8px 10px;
+    border-radius:10px;
+  }
+  .table-box td.l{ font-weight:700; color:#2f6c96; background:var(--lila2); color:#6a4a8a; border-radius:10px 0 0 10px;}
+  .table-box tr td:last-child{ border-radius:0 10px 10px 0; }
+
+  /* ---------- DIVIDER ---------- */
+  .flower-divider{
+    text-align:center;
+    font-size:18px;
+    margin:6px 0 0;
+    opacity:.7;
+    letter-spacing:8px;
+  }
+
+  /* ---------- CLOSING ---------- */
+  .closing{
+    background:linear-gradient(135deg, var(--fucsia-suave), var(--lila));
+    border-radius:24px;
+    padding:26px 22px;
+    text-align:center;
+    color:#fff;
+    margin-top:10px;
+    box-shadow:0 6px 16px rgba(200,100,150,0.25);
+  }
+  .closing .star{ font-size:26px; }
+  .closing h3{
+    font-family:'Caveat', cursive;
+    font-size:28px;
+    margin:6px 0 10px;
+  }
+  .closing p{
+    font-size:15px;
+    font-weight:600;
+    line-height:1.5;
+    font-style:italic;
+  }
+
+  .source{
+    font-size:10.5px;
+    color:#b691a3;
+    text-align:right;
+    margin-top:8px;
+  }
+
+  .legend-row{
+    display:flex;
+    justify-content:center;
+    gap:14px;
+    margin:18px 0 4px;
+    flex-wrap:wrap;
+  }
+  .legend-item{
+    display:flex; align-items:center; gap:5px;
+    font-size:11.5px; font-weight:700; color:var(--texto-suave);
+  }
+  .legend-dot{ width:12px;height:12px;border-radius:50%; }
+
+  @media (max-width:420px){
+    .header h1{ font-size:42px; }
+    .icon-grid.three{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="spine"></div>
+
+  <div class="header">
+    <div class="tape"></div>
+    <div class="tape right"></div>
+    <div style="font-size:34px;">🌸🌷🌺</div>
+    <h1>Pubertad, Climaterio<br>y Menopausia</h1>
+    <div class="sub">📝 Resumen de Ginecología — para repaso</div>
+    <div class="doodle-row">✿ ❀ ⊹ ❀ ✿</div>
+  </div>
+
+  <!-- SECCION 1: PUBERTAD -->
+  <div class="section">
+    <div class="node"></div>
+    <div class="card rot-l" style="border-top:6px solid var(--fucsia);">
+      <div class="pin" style="left:18px;"></div>
+      <div class="sec-title" style="color:var(--fucsia);"><span class="sec-num">1</span>🌸 Pubertad</div>
+      <p><strong>Definición:</strong> proceso de maduración cognitiva, psicosocial y biológica. El crecimiento y desarrollo de las características sexuales secundarias son sus manifestaciones más visibles.</p>
+
+      <div class="mini-box">
+        <b>Activación del eje:</b> Hipotálamo → Hipófisis → Ovario.<br>
+        El generador de pulsos hipotalámico (núcleo arqueado) libera <b>GnRH</b> de forma pulsátil, estimulando la hipófisis.
+      </div>
+
+      <div class="row-flow">
+        <span class="pill">GnRH</span>
+        <span class="pill">FSH</span>
+        <span class="pill">LH</span>
+        <span class="pill">Estrógenos</span>
+      </div>
+
+      <p><strong>Orden de eventos puberales:</strong></p>
+      <div class="row-flow">
+        <span class="tag pink">Adrenarquia</span>
+        <span class="tag pink">Telarquia 🌷</span>
+        <span class="tag pink">Pubarquia</span>
+        <span class="tag pink">Estirón de crecimiento</span>
+        <span class="tag pink">Menarquia 🩸</span>
+      </div>
+      <p style="font-size:12.5px; color:var(--texto-suave);">La menarquia ocurre en promedio <b>2,6 años</b> después del inicio puberal, tras el pico de crecimiento.</p>
+
+      <p><strong>Cambios físicos:</strong></p>
+      <ul>
+        <li>Desarrollo mamario (telarquia)</li>
+        <li>Crecimiento corporal acelerado</li>
+        <li>Menarquia</li>
+        <li>Redistribución de grasa corporal</li>
+      </ul>
+
+      <div class="icon-grid">
+        <div class="icon-card"><span class="emoji">⏳</span><span class="lbl">Pubertad precoz<br><small>&lt; 6-8 años</small></span></div>
+        <div class="icon-card"><span class="emoji">🐢</span><span class="lbl">Pubertad tardía<br><small>ausencia al 95% percentil</small></span></div>
+      </div>
+      <p style="font-size:12px;">⚠️ Evaluar siempre niñas &lt;6 años con telarquia/pubarquia, y &lt;8 años con ambas.</p>
+    </div>
+  </div>
+
+  <!-- SECCION 2: CLIMATERIO -->
+  <div class="section">
+    <div class="node"></div>
+    <div class="card rot-r" style="border-top:6px solid #c79be0;">
+      <div class="pin" style="right:18px; background:radial-gradient(circle at 30% 30%, #fff, #c79be0 60%);"></div>
+      <div class="sec-title" style="color:#9a5dc4;"><span class="sec-num">2</span>🌷 Climaterio</div>
+      <p><strong>Definición:</strong> conjunto de síntomas y signos que anteceden y siguen a la menopausia, por la declinación o cese de la función ovárica.</p>
+      <div class="mini-box" style="background:var(--lila2);">
+        <b>Climaterio ≠ Menopausia:</b> el climaterio es la <i>transición</i> (proceso); la menopausia es el <i>evento</i> (un día específico, retrospectivo).
+      </div>
+      <p>🔻 Envejecimiento ovárico → disminución progresiva del número y calidad de folículos → declive gradual de la función ovárica.</p>
+    </div>
+  </div>
+
+  <!-- SECCION 3: MENOPAUSIA -->
+  <div class="section">
+    <div class="node"></div>
+    <div class="card rot-l" style="border-top:6px solid var(--fucsia);">
+      <div class="pin" style="left:18px;"></div>
+      <div class="sec-title" style="color:var(--fucsia);"><span class="sec-num">3</span>🌺 Menopausia</div>
+      <p><strong>Definición:</strong> cese permanente de los periodos menstruales.</p>
+      <div class="mini-box">
+        🩸 <b>12 meses consecutivos de amenorrea</b>, sin otra causa patológica o fisiológica evidente.
+      </div>
+      <p>Diagnóstico <strong>clínico y retrospectivo</strong> — no requiere laboratorio en la mayoría de los casos.</p>
+      <div class="row-flow">
+        <span class="tag pink">Menopausia precoz: 40–45 años</span>
+        <span class="tag">Insuficiencia ovárica primaria: &lt;40 años</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECCION 4: CAMBIOS HORMONALES -->
+  <div class="section">
+    <div class="node"></div>
+    <div class="card rot-r" style="border-top:6px solid #5fa8d9;">
+      <div class="pin" style="right:18px; background:radial-gradient(circle at 30% 30%, #fff, #5fa8d9 60%);"></div>
+      <div class="sec-title" style="color:#2f6c96;"><span class="sec-num">4</span>🧬 Cambios hormonales</div>
+      <div class="hormone-diagram">
+        <div class="flow">
+          <span>⬇ Inhibina</span><span class="arrow">→</span><span>⬆ FSH</span><span class="arrow">→</span><span>⬇⬇ Estradiol</span>
+        </div>
+        <div style="height:8px;"></div>
+        <div class="flow">
+          <span>⬇ Progesterona</span><span class="arrow">→</span><span>⬇ Retroalimentación negativa</span><span class="arrow">→</span><span>⬆ GnRH</span>
+        </div>
+      </div>
+      <p style="font-size:12.5px; margin-top:8px;">Al fallar el ovario cesan los esteroides ováricos → se "abre" el asa de retroalimentación negativa → ⬆⬆ FSH y ⬆ GnRH compensatorios.</p>
+    </div>
+  </div>
+
+  <!-- SECCION 5: STRAW -->
+  <div class="section">
+    <div class="node"></div>
+    <div class="card rot-l" style="border-top:6px solid #d4548a;">
+      <div class="pin" style="left:18px; background:radial-gradient(circle at 30% 30%, #fff, #d4548a 60%);"></div>
+      <div class="sec-title" style="color:#b9447a;"><span class="sec-num">5</span>⏳ Escala STRAW</div>
+      <p>Etapas del envejecimiento reproductivo femenino:</p>
+      <div class="straw-wrap">
+        <div class="straw-line">
+          <div class="straw-step"><div class="dot"></div><div class="lbl">Edad<br>reproductiva</div><div class="sub">FSH normal</div></div>
+          <div class="straw-step"><div class="dot"></div><div class="lbl">Transición<br>temprana</div><div class="sub">⬆ FSH leve</div></div>
+          <div class="straw-step"><div class="dot"></div><div class="lbl">Transición<br>tardía</div><div class="sub">⬆⬆ FSH, ciclos saltados</div></div>
+          <div class="straw-step"><div class="dot"></div><div class="lbl">FMP<br>Menopausia</div><div class="sub">12 m amenorrea</div></div>
+          <div class="straw-step"><div class="dot"></div><div class="lbl">Posmeno-<br>pausia</div><div class="sub">⬆ FSH sostenida</div></div>
+        </div>
+      </div>
+      <p style="font-size:11.5px; color:var(--texto-suave); margin-top:4px;">FMP = fecha de la última menstruación. La perimenopausia abarca desde la transición tardía hasta 1 año posterior a la FMP.</p>
+    </div>
+  </div>
+
+  <!-- SECCION 6: MANIFESTACIONES CLINICAS -->
+  <div class="section">
+    <div class="node"></div>
+    <div class="card rot-r" style="border-top:6px solid var(--fucsia);">
+      <div class="pin" style="right:18px;"></div>
+      <div class="sec-title" style="color:var(--fucsia);"><span class="sec-num">6</span>💗 Manifestaciones clínicas</div>
+      <div class="icon-grid">
+        <div class="icon-card"><span class="emoji">🔥</span><span class="lbl">Sofocos</span></div>
+        <div class="icon-card"><span class="emoji">🌙</span><span class="lbl">Trastornos del sueño</span></div>
+        <div class="icon-card"><span class="emoji">😔</span><span class="lbl">Cambios de ánimo</span></div>
+        <div class="icon-card"><span class="emoji">💧</span><span class="lbl">Resequedad vaginal</span></div>
+        <div class="icon-card" style="grid-column:1/3;"><span class="emoji">🩸</span><span class="lbl">Alteraciones menstruales</span></div>
+      </div>
+      <p style="font-size:12px; margin-top:6px;">La transición menopáusica inicia hasta <b>5 años antes</b> de la menopausia.</p>
+    </div>
+  </div>
+
+  <!-- SECCION 7: CONSECUENCIAS A LARGO PLAZO -->
+  <div class="section">
+    <div class="node"></div>
+    <div class="card rot-l" style="border-top:6px solid #5fa8d9;">
+      <div class="pin" style="left:18px; background:radial-gradient(circle at 30% 30%, #fff, #5fa8d9 60%);"></div>
+      <div class="sec-title" style="color:#2f6c96;"><span class="sec-num">7</span>⏰ Consecuencias a largo plazo</div>
+      <div class="icon-grid three">
+        <div class="icon-card"><span class="emoji">🦴</span><span class="lbl">Osteoporosis</span><br><small>⬆ RANKL → ⬆ osteoclastos</small></div>
+        <div class="icon-card"><span class="emoji">❤️</span><span class="lbl">Enf. cardiovascular</span><br><small>⬇ HDL, ⬇ catabolismo LDL</small></div>
+        <div class="icon-card"><span class="emoji">🧠</span><span class="lbl">SNC</span><br><small>⬇ serotonina</small></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECCION 8: DIAGNOSTICO -->
+  <div class="section">
+    <div class="node"></div>
+    <div class="card rot-r" style="border-top:6px solid #9a5dc4;">
+      <div class="pin" style="right:18px; background:radial-gradient(circle at 30% 30%, #fff, #9a5dc4 60%);"></div>
+      <div class="sec-title" style="color:#9a5dc4;"><span class="sec-num">8</span>🔎 Diagnóstico</div>
+      <ul>
+        <li><b>Historia clínica</b> + sintomatología (base del diagnóstico de transición)</li>
+        <li><b>12 meses de amenorrea</b> en ciclos regulares previos</li>
+        <li><b>FSH</b> útil en situaciones especiales:</li>
+      </ul>
+      <div class="row-flow">
+        <span class="tag">Trastorno menstrual previo</span>
+        <span class="tag">Uso de ACO (suspender 2-4 sem)</span>
+        <span class="tag">Poshisterectomía / ablación</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECCION 9: DIAGNOSTICO DIFERENCIAL -->
+  <div class="section">
+    <div class="node"></div>
+    <div class="card rot-l" style="border-top:6px solid var(--fucsia);">
+      <div class="pin" style="left:18px;"></div>
+      <div class="sec-title" style="color:var(--fucsia);"><span class="sec-num">9</span>🧐 Diagnóstico diferencial</div>
+      <div class="icon-grid">
+        <div class="icon-card"><span class="emoji">🤰</span><span class="lbl">Embarazo</span></div>
+        <div class="icon-card"><span class="emoji">⚡</span><span class="lbl">Hipertiroidismo</span></div>
+        <div class="icon-card"><span class="emoji">🐢</span><span class="lbl">Hipotiroidismo</span></div>
+        <div class="icon-card"><span class="emoji">🍼</span><span class="lbl">Hiperprolactinemia</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECCION 10: ESTUDIOS COMPLEMENTARIOS -->
+  <div class="section">
+    <div class="node"></div>
+    <div class="card rot-r" style="border-top:6px solid #5fa8d9;">
+      <div class="pin" style="right:18px; background:radial-gradient(circle at 30% 30%, #fff, #5fa8d9 60%);"></div>
+      <div class="sec-title" style="color:#2f6c96;"><span class="sec-num">10</span>🧪 Estudios complementarios</div>
+      <table class="table-box">
+        <tr><td class="l">Citología cervical</td><td>Detección de cáncer cervicouterino</td></tr>
+        <tr><td class="l">Perfil de lípidos</td><td>Riesgo cardiovascular / sx metabólico</td></tr>
+        <tr><td class="l">Glucosa sérica</td><td>Resistencia a insulina</td></tr>
+        <tr><td class="l">Mastografía basal</td><td>Antes de THS (riesgo de cáncer mama)</td></tr>
+        <tr><td class="l">USG pélvico</td><td>Patología uterina/ovárica/endometrial</td></tr>
+        <tr><td class="l">EGO</td><td>Infección de vías urinarias</td></tr>
+        <tr><td class="l">TSH sérica</td><td>Descartar hipotiroidismo</td></tr>
+        <tr><td class="l">Densitometría ósea</td><td>Riesgo de osteoporosis &gt;60 años</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- SECCION 11: TERAPIA HORMONAL -->
+  <div class="section">
+    <div class="node"></div>
+    <div class="card rot-l" style="border-top:6px solid var(--fucsia);">
+      <div class="pin" style="left:18px;"></div>
+      <div class="sec-title" style="color:var(--fucsia);"><span class="sec-num">11</span>💊 Terapia hormonal sustitutiva (THS)</div>
+      <div class="mini-box">Principal indicación: <b>síntomas vasomotores</b>, para mejorar calidad de vida.</div>
+      <div class="icon-grid">
+        <div class="icon-card"><span class="emoji">🌷</span><span class="lbl">Con útero</span><br><small>Estrógeno + progestágeno</small></div>
+        <div class="icon-card"><span class="emoji">🩹</span><span class="lbl">Histerectomizadas</span><br><small>Solo estrógenos</small></div>
+      </div>
+      <p style="font-size:12.5px; margin-top:6px;">⏱️ Iniciar idealmente dentro de los <b>primeros 10 años</b> tras la menopausia, o en mujeres <b>&lt;60 años</b> sin contraindicaciones ("ventana de oportunidad").</p>
+    </div>
+  </div>
+
+  <!-- SECCION 12: ESQUEMAS THS -->
+  <div class="section">
+    <div class="node"></div>
+    <div class="card rot-r" style="border-top:6px solid #9a5dc4;">
+      <div class="pin" style="right:18px; background:radial-gradient(circle at 30% 30%, #fff, #9a5dc4 60%);"></div>
+      <div class="sec-title" style="color:#9a5dc4;"><span class="sec-num">12</span>📅 Esquemas de THS</div>
+      <table class="table-box">
+        <tr><td class="l">Cíclica</td><td>Estrógeno 1-25 + progestágeno últimos 10-14 días</td></tr>
+        <tr><td class="l">Cíclico-combinado</td><td>Estrógeno 1-25 + progestágeno 1-25</td></tr>
+        <tr><td class="l">Continuo cíclico</td><td>Estrógeno diario + progestágeno 14 días tras iniciar</td></tr>
+        <tr><td class="l">Continuo combinado</td><td>Estrógeno + progestágeno diario, sin descanso</td></tr>
+        <tr><td class="l">Intermitente combinado</td><td>Estrógeno diario + progestágeno 3 días on / 3 off</td></tr>
+      </table>
+      <p style="font-size:11.5px; color:var(--texto-suave);">*Progestágeno: 12–14 días al mes (esquemas cíclicos).</p>
+    </div>
+  </div>
+
+  <!-- SECCION 13: HORMONAS -->
+  <div class="section">
+    <div class="node"></div>
+    <div class="card rot-l" style="border-top:6px solid #5fa8d9;">
+      <div class="pin" style="left:18px; background:radial-gradient(circle at 30% 30%, #fff, #5fa8d9 60%);"></div>
+      <div class="sec-title" style="color:#2f6c96;"><span class="sec-num">13</span>🌼 Hormonas utilizadas</div>
+      <p><b>Estrógenos</b></p>
+      <div class="row-flow">
+        <span class="pill">Estradiol</span><span class="pill">Estriol</span><span class="pill">Etinilestradiol</span>
+      </div>
+      <p><b>Progestágenos</b></p>
+      <div class="row-flow">
+        <span class="pill" style="background:var(--rosa-claro); border-color:var(--fucsia-suave); color:var(--fucsia);">Progesterona</span>
+        <span class="pill" style="background:var(--rosa-claro); border-color:var(--fucsia-suave); color:var(--fucsia);">Medroxiprogesterona</span>
+        <span class="pill" style="background:var(--rosa-claro); border-color:var(--fucsia-suave); color:var(--fucsia);">Levonorgestrel</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECCION 14: CONTRAINDICACIONES -->
+  <div class="section">
+    <div class="node"></div>
+    <div class="card rot-r" style="border-top:6px solid #d4548a;">
+      <div class="pin" style="right:18px; background:radial-gradient(circle at 30% 30%, #fff, #d4548a 60%);"></div>
+      <div class="sec-title" style="color:#b9447a;"><span class="sec-num">14</span>🚫 Contraindicaciones de THS</div>
+      <ul class="warn-list">
+        <li>🚫 Cáncer de mama (presente o pasado)</li>
+        <li>🚫 Cáncer de endometrio activo</li>
+        <li>🚫 Tromboembolismo pulmonar</li>
+        <li>🚫 Hepatopatía aguda severa</li>
+        <li>🚫 Sangrado uterino inexplicado</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SECCION 15: VITAMINA D Y CALCIO -->
+  <div class="section">
+    <div class="node"></div>
+    <div class="card rot-l" style="border-top:6px solid #f0b94a;">
+      <div class="pin" style="left:18px; background:radial-gradient(circle at 30% 30%, #fff, #f0b94a 60%);"></div>
+      <div class="sec-title" style="color:#c98a1f;"><span class="sec-num">15</span>☀️ Vitamina D y Calcio</div>
+      <div class="icon-grid">
+        <div class="icon-card" style="background:#fff6e0;"><span class="emoji">☀️</span><span class="lbl">Vitamina D</span><br><small>600 UI/día<br>800 UI/día si alto riesgo</small></div>
+        <div class="icon-card" style="background:#eef7ff;"><span class="emoji">🥛</span><span class="lbl">Calcio</span><br><small>1000 mg/día (31–50 años)<br>1200 mg/día (≥51 años)</small></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECCION 16: TRATAMIENTO NO HORMONAL -->
+  <div class="section">
+    <div class="node"></div>
+    <div class="card rot-r" style="border-top:6px solid var(--fucsia);">
+      <div class="pin" style="right:18px;"></div>
+      <div class="sec-title" style="color:var(--fucsia);"><span class="sec-num">16</span>🌿 Tratamiento no hormonal</div>
+      <div class="row-flow">
+        <span class="tag pink">Fluoxetina</span>
+        <span class="tag pink">Paroxetina</span>
+        <span class="tag pink">Venlafaxina</span>
+        <span class="tag pink">Clonidina</span>
+        <span class="tag pink">Gabapentina</span>
+      </div>
+      <p style="margin-top:8px;"><b>Objetivo:</b></p>
+      <ul>
+        <li>⬇ Disminuir bochornos</li>
+        <li>🙂 Mejorar síntomas emocionales</li>
+        <li>🎢 Reducir labilidad afectiva</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="flower-divider">✿ ❀ ✿ ❀ ✿</div>
+
+  <!-- CIERRE -->
+  <div class="section" style="margin-bottom:20px;">
+    <div class="node" style="background:#fff; box-shadow:0 0 0 3px var(--fucsia);"></div>
+    <div class="closing">
+      <div class="star">✨</div>
+      <h3>Mensaje clave</h3>
+      <p>"La menopausia es un proceso fisiológico natural; el tratamiento busca mejorar la calidad de vida y prevenir complicaciones a largo plazo."</p>
+    </div>
+  </div>
+
+  <div class="legend-row">
+    <div class="legend-item"><div class="legend-dot" style="background:var(--fucsia);"></div>Pubertad / General</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#9a5dc4;"></div>Climaterio / Diagnóstico</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#5fa8d9;"></div>Hormonal / Estudios</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#f0b94a;"></div>Vitamina D y Calcio</div>
+  </div>
+
+  <div class="source">
+    Fuentes: Speroff Endocrinología Ginecológica 8ª ed. · Williams Ginecología 2ª ed. · UpToDate (Casper, 2022) · Parra 2018 · Torres Jiménez UNAM 2018
+  </div>
+</div>
+</body>
+</html>
