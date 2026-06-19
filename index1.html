@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>EPIA - Enfermedad Pélvica Inflamatoria Aguda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --rosa-palo:#f4d4dd;
+    --rosa-pastel:#fbe1e9;
+    --rosa-fuerte:#e98aa3;
+    --lila:#dcd2f0;
+    --lila2:#ece4fa;
+    --celeste:#cfe6f3;
+    --celeste2:#e3f1f8;
+    --blanco:#ffffff;
+    --bg:#fdf3f6;
+    --texto:#54394a;
+    --texto-suave:#8a6b7a;
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    background-image:
+      radial-gradient(circle at 8% 8%, #fbe6ee 0%, transparent 35%),
+      radial-gradient(circle at 92% 18%, #e6ddf7 0%, transparent 35%),
+      radial-gradient(circle at 12% 92%, #dcebf6 0%, transparent 30%);
+    font-family:'Quicksand', sans-serif;
+    color:var(--texto);
+    padding:0 0 60px 0;
+    overflow-x:hidden;
+  }
+
+  .page{
+    max-width:640px;
+    margin:0 auto;
+    position:relative;
+    padding:30px 18px 0 18px;
+  }
+
+  /* ---------- HEADER ---------- */
+  .header{
+    text-align:center;
+    position:relative;
+    padding:34px 18px 28px;
+    margin-bottom:6px;
+  }
+  .header .tape{
+    position:absolute;
+    width:90px;height:26px;
+    background:repeating-linear-gradient(45deg, #f3b7c8, #f3b7c8 6px, #eea3bb 6px, #eea3bb 12px);
+    opacity:.75;
+    transform:rotate(-8deg);
+    top:-6px; left:26px;
+    border-radius:3px;
+  }
+  .header .tape.right{
+    left:auto; right:26px; top:-10px;
+    transform:rotate(10deg);
+    background:repeating-linear-gradient(45deg, #c7e0ee, #c7e0ee 6px, #b3d3e6 6px, #b3d3e6 12px);
+  }
+  .header h1{
+    font-family:'Caveat', cursive;
+    font-size:46px;
+    font-weight:700;
+    color:var(--rosa-fuerte);
+    margin:10px 0 4px;
+    line-height:1.05;
+    text-shadow: 2px 2px 0 #fff;
+  }
+  .header .sub{
+    font-size:14.5px;
+    font-weight:600;
+    color:var(--texto-suave);
+    background:var(--blanco);
+    display:inline-block;
+    padding:6px 16px;
+    border-radius:20px;
+    border:2px dashed var(--rosa-fuerte);
+    transform:rotate(-1.5deg);
+  }
+  .doodle-row{
+    margin-top:12px;
+    font-size:18px;
+    letter-spacing:9px;
+    opacity:.8;
+  }
+
+  /* ---------- SPINE ---------- */
+  .spine{
+    position:absolute;
+    left:50%;
+    top:0;
+    bottom:0;
+    width:4px;
+    background:repeating-linear-gradient(to bottom, var(--rosa-fuerte) 0 10px, transparent 10px 20px);
+    transform:translateX(-50%);
+    z-index:0;
+    opacity:.7;
+  }
+
+  .node{
+    width:24px;height:24px;
+    border-radius:50%;
+    background:var(--rosa-fuerte);
+    border:3px solid #fff;
+    box-shadow:0 0 0 3px #f3c2d0;
+    margin:0 auto 0;
+    position:relative;
+    z-index:2;
+  }
+
+  /* ---------- SECTION CARD ---------- */
+  .section{
+    position:relative;
+    z-index:2;
+    margin:0 auto 32px;
+    max-width:100%;
+  }
+  .card{
+    background:var(--blanco);
+    border-radius:22px;
+    padding:18px 20px 16px;
+    margin-top:12px;
+    box-shadow:5px 8px 0 rgba(0,0,0,0.04), 0 2px 10px rgba(180,120,150,0.10);
+    position:relative;
+  }
+  .card.rot-l{ transform:rotate(-0.6deg); }
+  .card.rot-r{ transform:rotate(0.6deg); }
+
+  .pin{
+    position:absolute;
+    width:15px;height:15px;
+    border-radius:50%;
+    top:-8px;
+    box-shadow:0 2px 3px rgba(0,0,0,0.25);
+  }
+
+  .sec-title{
+    font-family:'Caveat', cursive;
+    font-size:27px;
+    font-weight:700;
+    margin:0 0 10px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+
+  p, li{ font-size:14px; line-height:1.5; margin:4px 0; }
+  ul{ margin:6px 0 6px 0; padding-left:20px; }
+  strong{ color:var(--rosa-fuerte); }
+
+  .tag{
+    display:inline-block;
+    background:var(--lila2);
+    border-radius:10px;
+    padding:4px 10px;
+    font-size:12.5px;
+    font-weight:600;
+    margin:3px 4px 3px 0;
+    color:#6a4f8a;
+  }
+  .tag.pink{ background:var(--rosa-pastel); color:var(--rosa-fuerte); }
+  .tag.blue{ background:var(--celeste2); color:#3a7da0; }
+
+  .row-flow{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+    margin:8px 0;
+  }
+
+  .mini-box{
+    background:var(--rosa-pastel);
+    border-radius:14px;
+    padding:10px 12px;
+    margin:6px 0;
+    font-size:13px;
+  }
+  .mini-box b{ color:var(--rosa-fuerte); }
+  .mini-box.blue{ background:var(--celeste2); }
+  .mini-box.blue b{ color:#3a7da0; }
+
+  /* ---------- ICON GRID ---------- */
+  .icon-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:9px;
+    margin-top:8px;
+  }
+  .icon-card{
+    background:var(--rosa-pastel);
+    border-radius:16px;
+    padding:11px 9px;
+    text-align:center;
+  }
+  .icon-card .emoji{ font-size:24px; display:block; margin-bottom:4px;}
+  .icon-card .lbl{ font-weight:700; font-size:12.5px; }
+  .icon-card small{ color:var(--texto-suave); font-size:10.5px; }
+
+  .icon-grid.three{ grid-template-columns:1fr 1fr 1fr; }
+  .icon-grid.three .icon-card{ background:var(--celeste2); padding:10px 6px;}
+
+  .icon-grid.celeste .icon-card{ background:var(--celeste2); }
+  .icon-grid.lila .icon-card{ background:var(--lila2); }
+
+  /* ---------- STAGE STRIP (MONIF) ---------- */
+  .stage-strip{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    margin-top:8px;
+  }
+  .stage{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    border-radius:14px;
+    padding:9px 12px;
+    font-size:13px;
+    font-weight:600;
+  }
+  .stage .dot{ width:16px;height:16px;border-radius:50%; flex-shrink:0; }
+  .stage.i{ background:#e7f5e6; }
+  .stage.i .dot{ background:#7bc47f; }
+  .stage.ii{ background:#fdf3d6; }
+  .stage.ii .dot{ background:#e8c84a; }
+  .stage.iii{ background:#fbe3d0; }
+  .stage.iii .dot{ background:#e8943f; }
+  .stage.iv{ background:#fad9d9; }
+  .stage.iv .dot{ background:#d9534f; }
+
+  /* ---------- WARNING LIST ---------- */
+  .warn-list{
+    background:#fdecec;
+    border:2px dashed #e6a3a3;
+    border-radius:16px;
+    padding:10px 14px;
+    margin-top:6px;
+    list-style:none;
+  }
+  .warn-list li{ color:#a85555; font-weight:600; margin:4px 0; }
+
+  /* ---------- TABLE STYLE ---------- */
+  .table-box{
+    width:100%;
+    border-collapse:separate;
+    border-spacing:0 6px;
+    margin-top:6px;
+  }
+  .table-box td{
+    background:var(--celeste2);
+    font-size:12.5px;
+    padding:8px 10px;
+    border-radius:10px;
+  }
+  .table-box td.l{ font-weight:700; background:var(--lila2); color:#6a4f8a; border-radius:10px 0 0 10px;}
+  .table-box tr td:last-child{ border-radius:0 10px 10px 0; }
+
+  /* ---------- DIVIDER ---------- */
+  .flower-divider{
+    text-align:center;
+    font-size:16px;
+    margin:4px 0 0;
+    opacity:.7;
+    letter-spacing:8px;
+  }
+
+  /* ---------- CLOSING ---------- */
+  .closing{
+    background:linear-gradient(135deg, var(--rosa-fuerte), var(--lila));
+    border-radius:24px;
+    padding:24px 20px;
+    text-align:center;
+    color:#fff;
+    margin-top:8px;
+    box-shadow:0 6px 16px rgba(200,100,150,0.25);
+  }
+  .closing .star{ font-size:24px; }
+  .closing h3{
+    font-family:'Caveat', cursive;
+    font-size:26px;
+    margin:6px 0 8px;
+  }
+  .closing p{
+    font-size:14px;
+    font-weight:600;
+    line-height:1.5;
+    font-style:italic;
+  }
+
+  .source{
+    font-size:10px;
+    color:#b690a3;
+    text-align:right;
+    margin-top:8px;
+  }
+
+  .legend-row{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    margin:16px 0 4px;
+    flex-wrap:wrap;
+  }
+  .legend-item{
+    display:flex; align-items:center; gap:5px;
+    font-size:11px; font-weight:700; color:var(--texto-suave);
+  }
+  .legend-dot{ width:11px;height:11px;border-radius:50%; }
+
+  @media (max-width:420px){
+    .header h1{ font-size:36px; }
+    .icon-grid.three{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="spine"></div>
+
+  <div class="header">
+    <div class="tape"></div>
+    <div class="tape right"></div>
+    <div style="font-size:30px;">🌸🦠🌷</div>
+    <h1>Enfermedad Pélvica<br>Inflamatoria Aguda<br>(EPIA)</h1>
+    <div class="sub">📝 "Infección ascendente del tracto genital superior femenino"</div>
+    <div class="doodle-row">✿ ❀ ⊹ ❀ ✿</div>
+  </div>
+
+  <!-- 1. QUE ES -->
+  <div class="section">
+    <div class="node"></div>
+    <div class="card rot-l" style="border-top:6px solid var(--rosa-fuerte);">
+      <div class="pin" style="left:18px; background:radial-gradient(circle at 30% 30%, #fff, var(--rosa-fuerte) 60%);"></div>
+      <div class="sec-title" style="color:var(--rosa-fuerte);">🌷 ¿Qué es la EPIA?</div>
+      <p>Infección del <strong>tracto genital superior</strong> femenino. Una de las principales causas de morbilidad en mujeres en edad reproductiva.</p>
+      <p>Afecta:</p>
+      <div class="row-flow">
+        <span class="tag pink">🌸 Endometrio</span>
+        <span class="tag pink">Trompas uterinas</span>
+        <span class="tag pink">🥚 Ovarios</span>
+        <span class="tag pink">Peritoneo pélvico</span>
+      </div>
+      <div class="mini-box">⚠️ Asociada a <b>infertilidad</b> y <b>embarazo ectópico</b>.</div>
+    </div>
+  </div>
+
+  <!-- 2. AGENTES ETIOLOGICOS -->
+  <div class="section">
+    <div class="node"></div>
+    <div class="card rot-r" style="border-top:6px solid #7c9fc8;">
+      <div class="pin" style="right:18px; background:radial-gradient(circle at 30% 30%, #fff, #7c9fc8 60%);"></div>
+      <div class="sec-title" style="color:#3a6a99;">🦠 Agentes etiológicos</div>
+      <div class="row-flow">
+        <span class="tag blue">Neisseria gonorrhoeae</span>
+        <span class="tag blue">Chlamydia trachomatis</span>
+        <span class="tag blue">Mycoplasma genitalium</span>
+        <span class="tag blue">E. coli</span>
+        <span class="tag blue">Anaerobios</span>
+        <span class="tag blue">Actinomyces</span>
+        <span class="tag blue">M. tuberculosis</span>
+      </div>
+      <div class="mini-box blue">🔬 <b>75%</b> de los casos son infecciones <b>polimicrobianas</b>.</div>
+    </div>
+  </div>
+
+  <!-- 3. FACTORES DE RIESGO -->
+  <div class="section">
+    <div class="node"></div>
+    <div class="card rot-l" style="border-top:6px solid var(--rosa-fuerte);">
+      <div class="pin" style="left:18px; background:radial-gradient(circle at 30% 30%, #fff, var(--rosa-fuerte) 60%);"></div>
+      <div class="sec-title" style="color:var(--rosa-fuerte);">⚠️ Factores de riesgo</div>
+      <ul>
+        <li>Edad entre <b>15–25 años</b></li>
+        <li>Vida sexual activa</li>
+        <li>Múltiples parejas sexuales</li>
+        <li>Relaciones sin preservativo 🚫</li>
+        <li>ETS / EPI previas</li>
+        <li>Duchas vaginales</li>
+        <li>Inserción reciente de DIU</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 4. CAUSAS ASOCIADAS -->
+  <div class="section">
+    <div class="node"></div>
+    <div class="card rot-r" style="border-top:6px solid #9c8fd0;">
+      <div class="pin" style="right:18px; background:radial-gradient(circle at 30% 30%, #fff, #9c8fd0 60%);"></div>
+      <div class="sec-title" style="color:#6a4f8a;">📋 Causas asociadas</div>
+      <div class="icon-grid lila">
+        <div class="icon-card"><span class="emoji">🤱</span><span class="lbl">Parto</span></div>
+        <div class="icon-card"><span class="emoji">🩸</span><span class="lbl">Aborto</span></div>
+        <div class="icon-card"><span class="emoji">📅</span><span class="lbl">Inserción DIU</span></div>
+        <div class="icon-card"><span class="emoji">🧫</span><span class="lbl">Biopsia endometrial</span></div>
+      </div>
+      <p style="font-size:12px; margin-top:6px;">+ Procedimientos ginecológicos invasivos.</p>
+    </div>
+  </div>
+
+  <!-- 5. SIGNOS Y SINTOMAS -->
+  <div class="section">
+    <div class="node"></div>
+    <div class="card rot-l" style="border-top:6px solid var(--rosa-fuerte);">
+      <div class="pin" style="left:18px; background:radial-gradient(circle at 30% 30%, #fff, var(--rosa-fuerte) 60%);"></div>
+      <div class="sec-title" style="color:var(--rosa-fuerte);">🔥 Signos y síntomas</div>
+      <div class="icon-grid">
+        <div class="icon-card"><span class="emoji">😖</span><span class="lbl">Dolor pélvico / abdominal bajo</span></div>
+        <div class="icon-card"><span class="emoji">💧</span><span class="lbl">Flujo vaginal anormal + mal olor</span></div>
+        <div class="icon-card"><span class="emoji">🩸</span><span class="lbl">Sangrado intermenstrual</span></div>
+        <div class="icon-card"><span class="emoji">💔</span><span class="lbl">Dispareunia</span></div>
+        <div class="icon-card"><span class="emoji">🌡️</span><span class="lbl">Fiebre / escalofríos</span></div>
+        <div class="icon-card"><span class="emoji">🚽</span><span class="lbl">Disuria</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. CLASIFICACION MONIF -->
+  <div class="section">
+    <div class="node"></div>
+    <div class="card rot-r" style="border-top:6px solid #e8943f;">
+      <div class="pin" style="right:18px; background:radial-gradient(circle at 30% 30%, #fff, #e8943f 60%);"></div>
+      <div class="sec-title" style="color:#c97a2c;">📊 Clasificación de Monif</div>
+      <div class="stage-strip">
+        <div class="stage i"><div class="dot"></div>Estadio I — Salpingitis sin peritonitis</div>
+        <div class="stage ii"><div class="dot"></div>Estadio II — Salpingitis con peritonitis</div>
+        <div class="stage iii"><div class="dot"></div>Estadio III — Absceso tubo-ovárico</div>
+        <div class="stage iv"><div class="dot"></div>Estadio IV — Rotura de absceso + shock séptico</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. CLASIFICACION LAPAROSCOPICA -->
+  <div class="section">
+    <div class="node"></div>
+    <div class="card rot-l" style="border-top:6px solid #7c9fc8;">
+      <div class="pin" style="left:18px; background:radial-gradient(circle at 30% 30%, #fff, #7c9fc8 60%);"></div>
+      <div class="sec-title" style="color:#3a6a99;">🔬 Clasificación laparoscópica</div>
+      <div class="mini-box blue"><b>Leve:</b> eritema, edema, trompas móviles.</div>
+      <div class="mini-box blue"><b>Moderada:</b> exudado purulento, menor movilidad tubárica.</div>
+      <div class="mini-box blue"><b>Severa:</b> piosálpinx, absceso tubo-ovárico.</div>
+    </div>
+  </div>
+
+  <!-- 8. DIAGNOSTICO -->
+  <div class="section">
+    <div class="node"></div>
+    <div class="card rot-r" style="border-top:6px solid #9c8fd0;">
+      <div class="pin" style="right:18px; background:radial-gradient(circle at 30% 30%, #fff, #9c8fd0 60%);"></div>
+      <div class="sec-title" style="color:#6a4f8a;">🔍 Diagnóstico</div>
+      <p>Se basa en:</p>
+      <div class="row-flow">
+        <span class="tag">📖 Historia clínica</span>
+        <span class="tag">🩺 Examen físico</span>
+        <span class="tag">🧪 Análisis de sangre</span>
+        <span class="tag">🚽 Análisis de orina</span>
+        <span class="tag">🌸 Evaluación ginecológica</span>
+      </div>
+      <div class="mini-box">❗ <b>No existe una prueba única</b> que confirme el diagnóstico.</div>
+    </div>
+  </div>
+
+  <!-- 9. TRATAMIENTO GENERAL -->
+  <div class="section">
+    <div class="node"></div>
+    <div class="card rot-l" style="border-top:6px solid var(--rosa-fuerte);">
+      <div class="pin" style="left:18px; background:radial-gradient(circle at 30% 30%, #fff, var(--rosa-fuerte) 60%);"></div>
+      <div class="sec-title" style="color:var(--rosa-fuerte);">💊 Tratamiento</div>
+      <p><b>Objetivo:</b> antibiótico de amplio espectro y temprano que cubra:</p>
+      <div class="row-flow">
+        <span class="tag pink">✔ Chlamydia trachomatis</span>
+        <span class="tag pink">✔ Neisseria gonorrhoeae</span>
+        <span class="tag pink">✔ Anaerobios</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10. TRATAMIENTO AMBULATORIO -->
+  <div class="section">
+    <div class="node"></div>
+    <div class="card rot-r" style="border-top:6px solid #7bc47f;">
+      <div class="pin" style="right:18px; background:radial-gradient(circle at 30% 30%, #fff, #7bc47f 60%);"></div>
+      <div class="sec-title" style="color:#4f9655;">🏠 Tratamiento ambulatorio</div>
+      <p>Indicado en casos <b>leves y moderados</b>.</p>
+      <div class="mini-box" style="background:#eaf6e9;">
+        💊 Levofloxacina 500 mg c/24 h<br>
+        💊 Metronidazol 500 mg c/24 h<br>
+        ⏱️ Duración: <b>14 días</b>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11. TRATAMIENTO HOSPITALARIO -->
+  <div class="section">
+    <div class="node"></div>
+    <div class="card rot-l" style="border-top:6px solid #d9534f;">
+      <div class="pin" style="left:18px; background:radial-gradient(circle at 30% 30%, #fff, #d9534f 60%);"></div>
+      <div class="sec-title" style="color:#b94440;">🏥 Tratamiento hospitalario</div>
+      <p>Indicado en: casos graves, absceso tubo-ovárico, falla al tratamiento.</p>
+      <table class="table-box">
+        <tr><td class="l">Esquema 1</td><td>Ceftriaxona + Doxiciclina</td></tr>
+        <tr><td class="l">Esquema 2</td><td>Clindamicina + Gentamicina</td></tr>
+        <tr><td class="l">Esquema 3</td><td>Cefotetán</td></tr>
+        <tr><td class="l">Esquema 4</td><td>Ampicilina / Sulbactam</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- 12. FALLA AL TRATAMIENTO -->
+  <div class="section">
+    <div class="node"></div>
+    <div class="card rot-r" style="border-top:6px solid #e8943f;">
+      <div class="pin" style="right:18px; background:radial-gradient(circle at 30% 30%, #fff, #e8943f 60%);"></div>
+      <div class="sec-title" style="color:#c97a2c;">❌ Falla al tratamiento</div>
+      <ul>
+        <li>Mala adherencia</li>
+        <li>Reinfección</li>
+        <li>Tratamiento inadecuado</li>
+      </ul>
+      <div class="mini-box" style="background:#fdf0dd;">⏱️ Recurrencia en los primeros <b>10–14 días</b>.</div>
+    </div>
+  </div>
+
+  <!-- 13. COMPLICACIONES -->
+  <div class="section">
+    <div class="node"></div>
+    <div class="card rot-l" style="border-top:6px solid var(--rosa-fuerte);">
+      <div class="pin" style="left:18px; background:radial-gradient(circle at 30% 30%, #fff, var(--rosa-fuerte) 60%);"></div>
+      <div class="sec-title" style="color:var(--rosa-fuerte);">🚨 Complicaciones</div>
+      <ul class="warn-list">
+        <li>🤰 Embarazo ectópico</li>
+        <li>🚫 Infertilidad</li>
+        <li>😖 Dolor pélvico crónico</li>
+        <li>🌸 Absceso tubo-ovárico</li>
+        <li>🔗 Adherencias pélvicas</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 14. PREVENCION -->
+  <div class="section">
+    <div class="node"></div>
+    <div class="card rot-r" style="border-top:6px solid #7c9fc8;">
+      <div class="pin" style="right:18px; background:radial-gradient(circle at 30% 30%, #fff, #7c9fc8 60%);"></div>
+      <div class="sec-title" style="color:#3a6a99;">🛡️ Prevención</div>
+      <div class="icon-grid celeste">
+        <div class="icon-card"><span class="emoji">🟢</span><span class="lbl">Uso de preservativo</span></div>
+        <div class="icon-card"><span class="emoji">🔬</span><span class="lbl">Detección temprana de ETS</span></div>
+        <div class="icon-card"><span class="emoji">🤝</span><span class="lbl">Evaluar a la pareja</span></div>
+        <div class="icon-card"><span class="emoji">🚫</span><span class="lbl">Evitar duchas vaginales</span></div>
+      </div>
+      <p style="font-size:12px; margin-top:6px; text-align:center;">📚 Educación sexual</p>
+    </div>
+  </div>
+
+  <div class="flower-divider">✿ ❀ ✿ ❀ ✿</div>
+
+  <!-- DATO CLAVE / CIERRE -->
+  <div class="section" style="margin-bottom:20px;">
+    <div class="node" style="background:#fff; box-shadow:0 0 0 3px var(--rosa-fuerte);"></div>
+    <div class="closing">
+      <div class="star">✨</div>
+      <h3>Dato clave para examen</h3>
+      <p>"Toda mujer joven sexualmente activa con dolor pélvico, dolor a la movilización cervical y riesgo de ETS debe considerarse sospechosa de EPIA e iniciar tratamiento oportunamente."</p>
+    </div>
+  </div>
+
+  <div class="legend-row">
+    <div class="legend-item"><div class="legend-dot" style="background:var(--rosa-fuerte);"></div>General / Clínica</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#7c9fc8;"></div>Microbiología / Prevención</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#9c8fd0;"></div>Diagnóstico / Causas</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#7bc47f;"></div>Tratamiento ambulatorio</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#d9534f;"></div>Tratamiento hospitalario</div>
+  </div>
+
+  <div class="source">
+    Fuente: Dr. René Mauricio Arévalo Mata — Enfermedad Pélvica Inflamatoria, 2025
+  </div>
+</div>
+</body>
+</html>
